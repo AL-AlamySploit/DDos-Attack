@@ -13,3 +13,6 @@ by overwhelming it with traffic from multiple sources. They target a wide variet
 <code>chmod +x ddos-attack.py</code>
 
 <code>python ddos-attack.py</code>
+
+# YouTube channel
+https://www.youtube.com/c/ALAlamyTube

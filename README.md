@@ -15,4 +15,4 @@ by overwhelming it with traffic from multiple sources. They target a wide variet
 <code>python ddos-attack.py</code>
 
 # YouTube channel
-https://www.youtube.com/c/ALAlamyTube
+https://www.youtube.com/channel/UCQuGjfmo04jDd6zlBscslGQ
